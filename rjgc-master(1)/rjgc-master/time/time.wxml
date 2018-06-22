@@ -1,0 +1,15 @@
+<!--time/time.wxml-->
+
+
+
+<view class="container">
+  <view class="userinfo">
+      
+      <view position="center">{{second}}</view>
+      <br/>
+  </view>
+  
+   
+<button bindtap='startClock'><view>{{msg}}</view></button>
+</view>
+ 

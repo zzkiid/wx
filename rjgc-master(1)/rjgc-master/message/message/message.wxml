@@ -1,0 +1,45 @@
+<!--message/message/message.wxml-->
+<import src="../../wxSearch/wxSearch.wxml" />
+<view style='display:flex;'>
+    <navigator url="../../info/info/info" open-type="navigate">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    </navigator>
+  <view class="weui-search-bar" style='display:flex;'>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>
+<template is="wxSearch" data="{{wxSearchData}}" />
+
+<view class="message_list">
+     <block wx:for="{{messages}}">
+        <navigator url="/message/chat/chat">
+          <view class="item" >
+             <view class="item-left">
+                  <image src="{{item.url}}" class="image"/>
+             </view>
+             <view class="item-middle">
+                  <view>
+                       <text class="title">{{item.title}}</text>
+                  </view>
+                  <view>
+                      <text class="message">{{item.message}}</text>
+                  </view>
+            </view>
+            <view class="item_right">
+                <view><text class="time">{{item.time}}</text></view>
+                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
+            </view>
+         </view>
+         <view  class="line"></view>
+       </navigator>
+    </block>
+  </view>
